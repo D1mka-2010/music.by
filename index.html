@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Музыкальный портал</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Музыкальный портал</h1>
+        <div class="search-bar">
+            <input type="text" id="search" placeholder="Поиск музыки...">
+            <button id="searchButton">🔍</button>
+        </div>
+    </header>
+
+    <main>
+        <!-- Вкладка с музыкой -->
+        <section id="default-music" class="tab-content active">
+            <h2>Моя музыка</h2>
+            <div class="music-list">
+                <!-- Сюда будут добавлены треки -->
+            </div>
+        </section>
+
+        <!-- Вкладка с плейлистами -->
+        <section id="playlists" class="tab-content">
+            <h2>Плейлисты</h2>
+            <div class="playlist-list">
+                <div class="playlist-item" id="favorite-playlist">
+                    <h3>Любимые треки</h3>
+                    <p><span class="track-count">0</span> треков</p>
+                    <div class="playlist-tracks"></div>
+                </div>
+            </div>
+            <button id="createPlaylistButton" class="btn">➕ Создать плейлист</button>
+        </section>
+
+        <!-- Вкладка для добавления музыки -->
+        <section id="add-music" class="tab-content">
+            <h2>Добавить трек</h2>
+            <div class="add-music-form">
+                <div id="drop-area" class="drop-area">
+                    <p>Перетащите файл сюда</p>
+                    <input type="file" id="music-file" accept="audio/*" class="file-input">
+                </div>
+                <div class="or-divider">
+                    <span class="or-text">или</span>
+                </div>
+                <button id="upload-file-button" class="btn">Выбрать файл</button>
+                <div class="input-group">
+                    <label for="music-title">Название трека</label>
+                    <input type="text" id="music-title" placeholder="Введите название">
+                </div>
+                <button id="upload-music-button" class="btn">Загрузить</button>
+                <p id="upload-message" class="message"></p>
+            </div>
+        </section>
+    </main>
+
+    <!-- Нижняя навигация -->
+    <nav class="bottom-nav">
+        <button class="nav-button active" data-tab="default-music">🎵 Музыка</button>
+        <button class="nav-button" data-tab="playlists">📁 Плейлисты</button>
+        <button class="nav-button" data-tab="add-music">➕ Добавить</button>
+    </nav>
+
+    <!-- Плашка с текущей музыкой -->
+    <div class="now-playing-bar">
+        <div class="progress-bar">
+            <div class="progress"></div>
+        </div>
+        <div class="now-playing-info">
+            <h3 id="now-playing-title">Название трека</h3>
+            <p id="now-playing-author">Автор</p>
+            <p id="now-playing-time">0:00 / 0:00</p>
+        </div>
+        <div class="now-playing-controls">
+            <button id="prev-button">⏮️</button>
+            <button id="play-pause-button">▶️</button>
+            <button id="next-button">⏭️</button>
+            <div class="menu">
+                <button class="menu-button">⋮</button>
+                <div class="menu-options">
+                    <button class="like-button">❤️ Лайк</button>
+                    <button class="dislike-button">👎 Дизлайк</button>
+                    <button class="download-button">⬇️ Скачать</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Модальное окно для создания плейлиста -->
+    <div class="modal" id="createPlaylistModal">
+        <div class="modal-content">
+            <h2>Создать плейлист</h2>
+            <input type="text" id="playlistName" placeholder="Название плейлиста">
+            <button id="savePlaylistButton">Создать</button>
+            <button id="closePlaylistModal">Закрыть</button>
+        </div>
+    </div>
+
+    <!-- Аудиоплеер -->
+    <audio id="audio-player" hidden></audio>
+
+    <script src="script.js"></script>
+</body>
+</html>
